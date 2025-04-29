@@ -3,9 +3,27 @@
   "module": "src/index.ts",
   "type": "module",
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "@types/pg": "^8.11.14",
+    "drizzle-kit": "^0.31.0",
+    "tsx": "^4.19.4"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
+  },
+  "scripts": {
+    "dev:driz": "bun run --watch src/drizzle/index.ts",
+    "build:driz": "bun build src/drizzle/index.ts --outfile=dist/drizzle.js",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:studio": "drizzle-kit studio",
+    "db:push": "drizzle-kit push"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^1.0.0",
+    "@pinecone-database/pinecone": "^5.1.2",
+    "dotenv": "^16.5.0",
+    "drizzle-orm": "^0.43.1",
+    "pg": "^8.15.6"
   }
 }
